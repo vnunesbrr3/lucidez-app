@@ -8,7 +8,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Lucidez">
-<meta name="theme-color" content="#0E0B24">
+<meta name="theme-color" content="#0B1316">
 <meta name="format-detection" content="telephone=no">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-180.png">
@@ -122,7 +122,7 @@ input:focus,select:focus,textarea:focus,button:focus-visible{outline:2px solid v
 </head>
 <body>
 <div class="top" id="top" aria-hidden="true"></div>
-<div class="app" id="app"><div class="splash"><svg width="88" height="88" viewBox="0 0 256 256" aria-label="Lucidez"><rect width="256" height="256" rx="56" fill="#0A100F"/><path d="M36 206L108 96L146 146L176 108L222 206Z" fill="#3CC4A6"/><path d="M176 108V50" stroke="#F2F7F6" stroke-width="5"/><path d="M178 50L214 64L178 78Z" fill="#FF8A73"/></svg></div></div>
+<div class="app" id="app"><div class="splash"><svg width="88" height="88" viewBox="0 0 256 256" aria-label="Lucidez"><rect width="256" height="256" rx="56" fill="#173F4D"/><path d="M36 206L108 96L146 146L176 108L222 206Z" fill="#7FB3C4"/><path d="M176 108V50" stroke="#E6EFF1" stroke-width="5"/><path d="M178 50L214 64L178 78Z" fill="#D3B678"/></svg></div></div>
 <nav class="tab" id="tabs" aria-label="Navegação principal"></nav>
 <div id="layer"></div>
 <script>
@@ -157,7 +157,7 @@ const THEMES={
  oceano:{name:'Oceano e ouro',sw:['#1F4E5F','#3F7A6B','#C2A15E'],v:{bg:LD('#F2F5F5','#0B1316'),tile:LD('#FFFFFF','#142026'),tile2:LD('#E8EEEF','#1C2B32'),ink:LD('#16282E','#E6EFF1'),sub:LD('#5E7178','#93A6AC'),pri:LD('#1F4E5F','#7FB3C4'),priD:LD('#143744','#4C8396'),onpri:LD('#FFFFFF','#0B1316'),coral:LD('#C2A15E','#D3B678'),coralT:LD('#7E6328','#E0CB9A'),coralBg:LD('#F4EFE2','#2A2619'),coralBgT:LD('#6E5524','#E0CB9A'),onCoral:LD('#261C06','#261C06'),amberBg:LD('#F4EBE4','#2A231E'),amberT:LD('#8A5638','#D9B39A'),track:LD('#DDE6E8','#22333A'),border:LD('#C6D3D6','#34484F'),iconBg:LD('#E2ECEF','#18303A'),skyBg:LD('#E2EFEA','#16302A'),sky:LD('#3F7A6B','#93CDBD'),sky1:LD('#E8EFF1','#0F1A1E'),mt1:LD('#C8D9DE','#1F3740'),mt2:LD('#B1C8CF','#27434D'),mt3:LD('#BED1D6','#223D46'),gold:'#E6D3A3',glow:'rgba(230,211,163,.14)',g1:'linear-gradient(140deg,#173F4D,#2A6072)',g2:'linear-gradient(140deg,#356B5D,#4E8877)',g3:'linear-gradient(140deg,#A88848,#C2A266)',gw:'linear-gradient(140deg,#94684A,#AE8462)',gb:'linear-gradient(140deg,#5C4650,#78606A)'}},
  vibrante:{name:'Original vibrante',sw:['#2D1FA3','#0E9F6E','#FFB020'],v:null}
 };
-function applyTheme(){const t=THEMES[S.theme||'nevoa'];let el=document.getElementById('thm');if(!el){el=document.createElement('style');el.id='thm';document.head.appendChild(el)}
+function applyTheme(){const t=THEMES[S.theme||'oceano'];let el=document.getElementById('thm');if(!el){el=document.createElement('style');el.id='thm';document.head.appendChild(el)}
  if(!t||!t.v){el.textContent='';return}el.textContent=':root{'+Object.entries(t.v).map(([k,v])=>`--${k}:${v}`).join(';')+'}'}
 /* ---------- estado ---------- */
 const DEF=()=>({v:1,setup:false,demo:false,name:'',salary:0,balance:0,payRule:'nth',payN:5,payDay:5,sat:true,vr:0,vrBal:0,cardOpen:0,reserve:0,extra:0,strategy:'snowball',
@@ -229,7 +229,7 @@ function confetti(){const w=document.createElement('div');w.className='conf';con
 const ACH={first_tx:'Primeiro registro',lume_no:'Desistiu com lucidez',debt_paid:'Primeira dívida quitada',streak7:'7 dias de sequência',streak30:'30 dias de sequência',plan:'Plano de liberdade adotado',saved1000:'R$ 1.000 economizados',map:'Dívidas mapeadas'};
 function unlock(k){if(S.ach[k])return;S.ach[k]=iso(today());confetti();setTimeout(()=>toast('Conquista: '+ACH[k]),600)}
 function streak(){const set=new Set(S.days);let n=0,folga=2,d=today();for(let i=0;i<400;i++){const k=iso(d);if(set.has(k))n++;else if(i>0&&folga>0)folga--;else if(i>0)break;d.setDate(d.getDate()-1)}return n}
-const POOL=[['reg','Registrar um gasto',10],['lume','Pensar antes de comprar com o Lume',20],['potes','Dar uma olhada nos potes',10],['pay','Registrar um pagamento de dívida',20],['sim','Rodar o simulador da liberdade',10],['saldo','Conferir o saldo em conta',10],['open','Abrir o Lucidez hoje',10]];
+const POOL=[['reg','Registrar um gasto',10],['lume','Pensar antes de comprar',20],['potes','Dar uma olhada nos potes',10],['pay','Registrar um pagamento de dívida',20],['sim','Rodar o simulador',10],['saldo','Conferir o saldo em conta',10],['open','Abrir o Lucidez hoje',10]];
 function missions(){const k=iso(today());let h=0;for(const ch of k)h=(h*31+ch.charCodeAt(0))%9973;const pick=['open'];const rest=POOL.filter(p=>p[0]!=='open');
  while(pick.length<3){const p=rest[h%rest.length][0];if(!pick.includes(p))pick.push(p);h=(h*7+3)%9973}
  const done=S.md[k]||[];return pick.map(id=>{const p=POOL.find(x=>x[0]===id);return{id,t:p[1],p:p[2],done:done.includes(id)}})}
@@ -250,7 +250,7 @@ function welcome(){return`<div class="stack" style="padding-top:20px">
  <div class="hero"><div style="font-weight:700">Lucidez</div><div class="big" style="font-size:40px">Quanto posso gastar hoje?</div><div>Seu assistente para sair do ciclo das dívidas, com calma e sem culpa.</div></div>
  <div class="tile stack"><div class="tt">Vamos começar</div><p class="sm" style="margin:0">Leva 1 minuto. Você pode mudar tudo depois em Jornada → Configurações.</p>
  <button class="btn full" data-a="setup">Configurar com os meus números</button><button class="btn ghost full" data-a="demo">Explorar com dados de exemplo</button></div></div>`}
-function vHoje(){const k=calc(),c=k.c,lv=level(),h=new Date().getHours(),sau=h<12?'Bom dia':h<18?'Boa tarde':'Boa noite';
+function vHoje(){const k=calc();try{S.dstat=S.dstat||{};const tk=iso(today());S.dstat[tk]=Object.assign(S.dstat[tk]||{},{spent:k.spentToday},S.dstat[tk]&&S.dstat[tk].budget!=null?{}:{budget:Math.max(0,k.dayBudget)})}catch(e){}const c=k.c,lv=level(),h=new Date().getHours(),sau=h<12?'Bom dia':h<18?'Boa tarde':'Boa noite';
  const isPay=iso(c.start)===iso(today())&&!S.salaryDone[c.key];
  const pr=progress(),sm=sim(S.extra,S.strategy),st=streak(),ms=missions(),wk=weekOpen();
  const up=S.bills.map(b=>({n:b.name,a:b.amount,d:dueIn(b.day,c),p:(b.paid||{})[c.key]})).concat(S.debts.filter(d=>d.mode==='fixed'&&d.bal>0&&d.inst&&d.due&&!d.payroll).map(d=>({n:d.name,a:d.inst,d:dueIn(d.due,c),p:d.paidCycle===c.key}))).filter(x=>x.d&&!x.p&&ddiff(x.d,today())<=3&&ddiff(x.d,today())>=0);
@@ -262,7 +262,7 @@ function vHoje(){const k=calc(),c=k.c,lv=level(),h=new Date().getHours(),sau=h<1
  <span class="chip c" style="font-size:14px;font-weight:800">${ic('flame',16,2)}${st}</span></div>
  <div class="sm" style="margin:10px 0 10px">${sau}${S.name?', '+esc(S.name):''} · ${new Date().toLocaleDateString('pt-BR',{weekday:'long',day:'numeric',month:'long'})}</div>
  <div class="stack">
- ${(!S.bills.length||!S.debts.length||!S.tx.length)&&!S.demo?`<div class="tile stack" style="gap:6px"><span class="tt">Primeiros passos</span><span class="sm" style="margin-top:-4px">Cada um vale XP. Um por vez.</span>${[[!S.tx.length,'Registrar seu primeiro gasto','reg0'],[!S.bills.length,'Cadastrar contas fixas (luz, internet…)','bill0'],[!S.debts.length,'Mapear a primeira dívida','debt0']].filter(x=>x[0]).map(x=>`<button class="btn ghost full" style="justify-content:space-between" data-a="${x[2]}">${x[1]} ${ic('chev',18)}</button>`).join('')}</div>`:''}
+ ${(!S.bills.length||!S.debts.length||!S.tx.length)&&!S.demo?`<div class="tile stack" style="gap:6px"><span class="tt">Primeiros passos</span><span class="sm" style="margin-top:-4px">Cada um vale XP. Um por vez.</span>${[[!S.tx.length,'Registrar seu primeiro gasto','reg0'],[!S.bills.length,'Cadastrar contas fixas','bill0'],[!S.debts.length,'Mapear a primeira dívida','debt0']].filter(x=>x[0]).map(x=>`<button class="btn ghost full" style="justify-content:space-between;text-align:left;font-size:15px" data-a="${x[2]}"><span>${x[1]}</span>${ic('chev',18)}</button>`).join('')}</div>`:''}
  ${isPay?`<div class="coral row"><div class="sp"><div class="tt">Dia do pagamento!</div><div style="font-size:13px">Salário caiu? Some ${brl0(S.salary)} ao saldo em 1 toque.</div></div><button class="btn" data-a="salary">Somar</button></div>`:''}
  <div>
  <button class="hero ${k.state==='ok'?'':k.state}" data-a="breakdown" style="position:relative;overflow:hidden;z-index:1"><span style="position:absolute;right:-34px;top:-34px;width:140px;height:140px;border-radius:70px;background:var(--glow)"></span>
@@ -290,7 +290,7 @@ function vGastos(){const c=cycle(),pi=potInfo(c),freeSum=pi.reduce((s,p)=>s+Math
  const card=(p,i)=>{const t=tag(p);const liq=p.st==='low'?'var(--coral)':'var(--pri)';return`<button class="tile stack" style="padding:14px;gap:6px;border:0;text-align:left;color:var(--ink);font:inherit;cursor:pointer" data-a="pot" data-id="${p.id}"><div class="row" style="align-items:flex-start"><span class="sp">${jar('j'+i,p.pct,liq,liq,44,56)}</span><span class="chip" style="background:${t[1]};color:${t[2]}">${t[0]}</span></div><span class="sm">${esc(p.name)}</span><span class="num">${brl0(p.rest)}</span>${p.st==='low'&&c.left?`<span style="font-size:12px;color:var(--coralT)">${brl(Math.max(0,p.rest)/c.left)} por dia</span>`:''}</button>`};
  const vrCard=S.vr?`<div class="tile stack" style="padding:14px;gap:6px"><div class="row" style="align-items:flex-start"><span class="sp">${jar('jvr',S.vr?Math.max(0,S.vrBal)/S.vr:0,'var(--pri)','var(--pri)',44,56)}</span><span class="chip m">VR/VA</span></div><span class="sm">Vale refeição</span><span class="num">${brl0(S.vrBal)}</span></div>`:'';
  const txs=S.tx.filter(x=>x.date>=c.key).slice().reverse();
- return`<div class="hd"><div><div class="sm">Ciclo ${c.start.toLocaleDateString('pt-BR',{day:'numeric',month:'numeric'})} → ${new Date(c.next-864e5).toLocaleDateString('pt-BR',{day:'numeric',month:'numeric'})} · faltam ${c.left} dias</div><h1>Seus potes</h1></div><span class="chip m">${brl0(freeSum)} livres</span></div>
+ return`<div class="hd"><div><div class="sm">Ciclo ${c.start.toLocaleDateString('pt-BR',{day:'numeric',month:'numeric'})} → ${new Date(c.next-864e5).toLocaleDateString('pt-BR',{day:'numeric',month:'numeric'})} · faltam ${c.left} dias</div><h1>Seus potes</h1></div><span class="chip m">${brl0(freeSum)} nos potes</span></div>
  <div class="stack">
  <button class="hero row" style="gap:16px" data-a="pot" data-id="${ess.id}"><span style="background:var(--chip);border-radius:20px;padding:8px 10px;display:flex">${jar('jbig',ess.pct,'rgba(255,255,255,.92)','var(--gold)',70,90,'rgba(255,255,255,.22)')}</span><span class="stack" style="gap:2px"><span style="font-weight:600">${esc(ess.name)}</span><span class="big" style="font-size:36px">${brl0(ess.rest)}</span><span style="font-size:13px">restam de ${brl0(ess.budget)}</span></span></button>
  <div class="g2">${others.map((p,i)=>card(p,i)).join('')}${vrCard}</div>
@@ -313,7 +313,7 @@ function orderedDebts(){const s=sim(S.extra,S.strategy);return S.debts.slice().s
 function vLib(){const p=progress(),s=sim(S.extra,S.strategy),ds=orderedDebts();
  if(!S.debts.length)return`<div class="hd"><h1>Liberdade</h1></div><div class="tile empty stack" style="align-items:center">${ic('mtn',40)}<div class="tt">Vamos mapear suas dívidas aos poucos?</div><p style="margin:0">Uma por vez, sem pressa. Se não souber algum dado, deixe em branco e complete depois.</p><button class="btn" data-a="debt">Adicionar primeira dívida</button></div>`;
  const bad=S.debts.filter(d=>d.bal>0&&d.rate&&d.inst&&d.inst<=d.bal*d.rate/100);
- return`<div class="hd"><div><div class="sm">Seu Dia da Liberdade</div><h1>${s.months==null?'Ainda sem data':s.months===0?'Você está livre!':freeDate(s.months).replace(/^./,c=>c.toUpperCase())}</h1></div><span class="chip c">${Math.round(p*100)}% subido</span></div>
+ return`<div class="hd"><div><div class="sm">Seu Dia da Liberdade</div><h1>${s.months==null?'Ainda sem data':s.months===0?'Você está livre!':freeDate(s.months).replace(/^./,c=>c.toUpperCase())}</h1></div><span class="chip c">${Math.round(p*100)}% quitado</span></div>
  <div class="stack"><div style="border-radius:26px;overflow:hidden;line-height:0">${mountain(p,ds)}</div>
  ${bad.length?`<div class="coral"><b>Atenção, sem culpa:</b> a parcela de ${bad.map(d=>esc(d.name)).join(', ')} não cobre os juros do mês, então a dívida cresce. Vale tentar renegociar a taxa ou o prazo com o credor.</div>`:''}
  ${s.skipped?`<div class="sm">${s.skipped} dívida(s) flexível(is) sem data-meta não entram na data. Defina uma meta para incluir.</div>`:''}
@@ -324,13 +324,14 @@ function vLib(){const p=progress(),s=sim(S.extra,S.strategy),ds=orderedDebts();
  <button class="btn full" style="min-height:54px" data-a="sim">E se eu pagar a mais? ${ic('chev',18,2.5)}</button>
  ${S.extra?`<div class="sm" style="text-align:center">Plano atual: ${brl0(S.extra)} extra por mês.</div>`:''}</div>`}
 function vJor(){const lv=level(),st=streak(),g=S.goals;
- return`<div class="hd"><h1>Jornada</h1><span class="chip c">${ic('flame',14,2)}${st} dias</span></div><div class="stack">
+ return`<div class="hd"><h1>Jornada</h1><span class="chip c">${ic('flame',14,2)}${st} ${st===1?'dia':'dias'}</span></div><div class="stack">
  <div class="hero"><div style="font-weight:600">Nível ${lv.n} · ${lv.name}</div><div class="big" style="font-size:40px">${lv.p} XP</div><div class="bar" style="background:var(--chip);margin-top:8px"><i style="width:${lv.n>=10?100:((lv.p-lv.from)/(lv.to-lv.from)*100)}%;background:var(--onpri)"></i></div><div style="font-size:13px;margin-top:6px">${lv.n>=10?'Nível máximo':(lv.to-lv.p)+' para o próximo nível'}</div></div>
  <div class="g2"><div class="tile"><div class="sm">Economizado com lucidez</div><div class="num" style="color:var(--pri)">${brl0(S.saved)}</div></div><div class="tile"><div class="sm">Dívidas quitadas</div><div class="num">${S.debts.filter(d=>d.bal<=0).length} de ${S.debts.length}</div></div></div>
  <div class="tile"><div class="row"><span class="tt sp">Metas de compra</span></div>${g.length?g.map(x=>`<div class="li"><span class="sp"><b style="font-weight:600">${esc(x.title)}</b><div class="bar" style="margin:6px 0"><i style="width:${Math.min(100,x.saved/x.price*100)}%"></i></div><span class="sm">${brl0(x.saved)} de ${brl0(x.price)} · ${brl0(x.weekly)}/semana</span></span>${x.saved>=x.price?`<span class="chip m">Pronta!</span>`:`<button class="opt" data-a="goaladd" data-id="${x.id}">+ ${brl0(x.weekly)}</button>`}</div>`).join(''):'<p class="sm">Quando o Lume te ajudar a planejar uma compra, a meta aparece aqui.</p>'}</div>
  <div class="tile"><div class="tt" style="margin-bottom:8px">Conquistas</div><div class="g2">${Object.entries(ACH).map(([k,t])=>`<div class="row" style="gap:8px;opacity:${S.ach[k]?1:.45}"><span class="ic" style="width:34px;height:34px;background:${S.ach[k]?'var(--coralBg)':'var(--tile2)'};color:${S.ach[k]?'var(--coralT)':'var(--sub)'}">${ic('tro',18)}</span><span style="font-size:13px;font-weight:600">${t}</span></div>`).join('')}</div></div>
+ ${(()=>{const d=S.lastBackup?ddiff(today(),pd(S.lastBackup)):999;return d>14&&!S.demo?`<div class="coral row"><span class="sp" style="font-size:14px"><b>Faça um backup.</b> ${S.lastBackup?"O último foi há "+d+" dias.":"Você ainda não fez nenhum."} Seus dados ficam só neste iPhone.</span><button class="btn" style="min-height:44px" data-a="backup">Fazer</button></div>`:""})()}
  <div class="tile stack"><div class="tt">Configurações</div>
- <div class="sm" style="font-weight:600">Cores do app</div><div class="g2">${Object.entries(THEMES).map(([k,t])=>`<button class="card4 ${ (S.theme||'nevoa')===k?'hl':''}" data-a="theme" data-v="${k}" style="flex-direction:row;align-items:center;gap:10px"><span class="row" style="gap:3px">${t.sw.map(c=>`<i style="width:14px;height:28px;border-radius:5px;background:${c}"></i>`).join('')}</span><b style="font-size:14px">${t.name}</b></button>`).join('')}</div>
+ <div class="sm" style="font-weight:600">Cores do app</div><div class="g2">${Object.entries(THEMES).map(([k,t])=>`<button class="card4 ${ (S.theme||'oceano')===k?'hl':''}" data-a="theme" data-v="${k}" style="flex-direction:row;align-items:center;gap:10px"><span class="row" style="gap:3px">${t.sw.map(c=>`<i style="width:14px;height:28px;border-radius:5px;background:${c}"></i>`).join('')}</span><b style="font-size:14px">${t.name}</b></button>`).join('')}</div>
  <button class="btn ghost full" data-a="setup">Editar meus números</button>
  <button class="btn ghost full" data-a="backup">Backup: copiar ou restaurar</button>
  <button class="btn ghost full hide" id="inst" data-a="install">${ic('card',18)}Instalar como app no computador</button>
@@ -426,7 +427,7 @@ function debtForm(id){const d=S.debts.find(x=>x.id===id)||{type:'credit_card',mo
  ${f('dc','Com quem (credor ou pessoa)',d.creditor,'maxlength="40"')}
  <div class="g2">${f('db','Quanto falta (R$)',fmtIn(d.bal),'inputmode="decimal"')}${f('dr','Juros % ao mês',d.rate?String(d.rate).replace('.',','):'','inputmode="decimal" placeholder="ex.: 2,1"')}</div>
  <div class="g2">${f('di','Parcela (R$)',fmtIn(d.inst),'inputmode="decimal"')}${f('dd','Dia do vencimento',d.due,'inputmode="numeric" placeholder="1 a 31"')}</div>
- ${f('dg','Meta para quitar (flexível)',d.target,'type="date"')}
+ <div id="dgw" style="${d.mode==='flex'?'':'display:none'}">${f('dg','Meta para quitar (opcional)',d.target,'type="date"')}</div>
  ${f('dnp','Parcelas restantes (opcional)',d.n,'inputmode="numeric"')}
  <label class="row" style="gap:8px;font-size:14px"><input type="checkbox" id="dp" style="width:22px;min-height:22px" ${d.payroll?'checked':''}> Descontada no holerite (consignado)</label>
  <p class="sm" style="margin:0">Consignado CLT: os dados costumam estar no app Carteira de Trabalho Digital.</p>
@@ -527,7 +528,7 @@ document.addEventListener('click',e=>{if(e.target.id==='ov'){closeSheet();return
  wipe:()=>sheet('Apagar tudo?',`<div class="stack"><p>Isso apaga todos os seus registros, dívidas e pontos deste iPhone. Não dá para desfazer. Faça um backup antes, se quiser.</p><button class="btn ghost full" data-a="close">Cancelar</button><button class="lnk" style="color:var(--coralT)" data-a="wipeok">Sim, apagar tudo</button></div>`),
  wipeok:()=>{S=DEF();save();closeSheet()},
  breakdown:()=>{const k=calc();const r=(l,v,s)=>`<div class="li"><span class="sp">${l}</span><b style="color:${s?'var(--coralT)':'var(--ink)'}">${s?'−':''}${brl(v)}</b></div>`;
-  sheet('De onde vem esse número',`<div class="tile">${r('Saldo em conta',S.balance)}${r('Fatura do cartão em aberto',S.cardOpen,1)}${r('Contas fixas a vencer',k.bills,1)}${r('Parcelas de dívidas a vencer',k.inst,1)}${r('Extra do plano de liberdade',k.extra,1)}${r('Metas de compra',k.goals,1)}${r('Guardar no ciclo',S.reserve,1)}<div class="li"><b class="sp">Livre até o pagamento</b><b>${brl(k.free)}</b></div><div class="li"><span class="sp">÷ ${k.c.left} dias</span><b>${brl(k.dayBudget)}/dia</b></div></div>
+  sheet('De onde vem esse número',`<div class="tile">${r('Saldo em conta',S.balance)}${r('Fatura do cartão em aberto',S.cardOpen,1)}${r('Contas fixas a vencer',k.bills,1)}${r('Parcelas de dívidas a vencer',k.inst,1)}${r('Extra do plano de liberdade',k.extra,1)}${r('Metas de compra',k.goals,1)}${r('Guardar no ciclo',S.reserve,1)}<div class="li"><b class="sp">Livre até o pagamento</b><b>${brl(k.free)}</b></div><div class="li"><span class="sp">÷ ${k.c.left} dias</span><b>${brl(k.dayBudget)}/dia</b></div><div class="li"><span class="sp">Já gasto hoje</span><b style="color:var(--coralT)">−${brl(k.spentToday)}</b></div><div class="li"><b class="sp">Ainda pode gastar hoje</b><b>${brl(k.left)}</b></div></div>
   ${k.state==='bad'?`<div class="coral" style="margin-top:10px"><b>Plano de 2 dias:</b> gastando só o essencial, cada dia sem gastos extras devolve ${brl0(Math.abs(k.free)/2)} ao azul em média. Você não está sozinho nessa: ajuste, respire e siga.</div>`:''}<p class="sm">O VR/VA não entra nessa conta: ele tem saldo próprio.</p>`)},
  balance:()=>{mission('saldo');sheet('Atualizar saldo',`<div class="stack"><label class="f">Saldo em conta agora (R$)<input id="nb" inputmode="decimal" value="${fmtIn(S.balance)}"></label><label class="f">Fatura do cartão em aberto (R$)<input id="nc" inputmode="decimal" value="${fmtIn(S.cardOpen)}"></label><button class="btn full" data-a="balok">Salvar</button></div>`)},
  balok:()=>{S.balance=toCents($('#nb').value);S.cardOpen=toCents($('#nc').value);save();closeSheet()},
@@ -552,7 +553,7 @@ document.addEventListener('click',e=>{if(e.target.id==='ov'){closeSheet();return
  nci:()=>newCat.set('i',v),nct:()=>newCat.set('t',v),
  ncok:()=>{const n=$('#ncn').value.trim();if(!n)return $('#ncerr').textContent='Dê um nome.';const o=newCat.get();const c={id:uid(),name:n,icon:o.icon,tint:o.tint,pot:$('#ncp').value,imp:$('#nci2').checked?1:0};S.cats.push(c);R.cat=c.id;save();regRender()},
  feel:()=>{const x=S.tx.find(t=>t.id===R.lastTx);if(x&&!x.feel){x.feel=v;S.feel[v]=(S.feel[v]||0)+1;addPts(3,'reflexão');save()}document.querySelectorAll('[data-a=feel]').forEach(o=>o.classList.toggle('on',o.dataset.v===v));$('#feelr').textContent=v==='Necessidade'?'Boa! Necessidade atendida é dinheiro bem usado.':'Obrigado pela honestidade. Perceber o gatilho já é metade do caminho.'},
- debt:()=>debtForm(id),dmode:()=>{debtForm.mode=v;document.querySelectorAll('[data-a=dmode]').forEach(o=>o.classList.toggle('on',o.dataset.v===v))},
+ debt:()=>debtForm(id),dmode:()=>{debtForm.mode=v;const w=$('#dgw');if(w)w.style.display=v==='flex'?'':'none';document.querySelectorAll('[data-a=dmode]').forEach(o=>o.classList.toggle('on',o.dataset.v===v))},
  dsave:()=>debtSave(id),brakeok:()=>{const d=debtForm.pending;S.debts.push({...d,init:d.bal});save();closeSheet()},
  ddel:()=>{S.debts=S.debts.filter(x=>x.id!==id);S.pays=S.pays.filter(p=>p.debt!==id);save();closeSheet()},
  dpay:()=>payDebt(id,false),dextra:()=>payDebt(id,true),
@@ -563,7 +564,7 @@ document.addEventListener('click',e=>{if(e.target.id==='ov'){closeSheet();return
  sadopt:()=>{S.extra=SM.extra+(SM.on.d?SM.deliv:0);S.strategy=SM.strat;addPts(50,'plano');unlock('plan');save();closeSheet()},
  goaladd:()=>{const g=S.goals.find(x=>x.id===id);g.saved=Math.min(g.price,g.saved+g.weekly);S.balance-=g.weekly;addPts(10,'meta');if(g.saved>=g.price)confetti();save();render()},
  backup:()=>sheet('Backup',`<div class="stack"><p class="sm" style="margin:0">Seus dados ficam guardados só neste iPhone. Faça um backup de vez em quando: copie o texto abaixo e guarde em um lugar seguro (Notas, e-mail para você mesmo). Para restaurar, cole um backup e toque em Restaurar.</p><textarea id="bk" rows="7">${esc(JSON.stringify(S))}</textarea><div class="g2"><button class="btn" data-a="bkcopy">Copiar</button><button class="btn ghost" data-a="bkload">Restaurar</button></div><p class="sm" id="bkm" style="margin:0"></p></div>`),
- bkcopy:()=>{navigator.clipboard?.writeText($('#bk').value).then(()=>$('#bkm').textContent='Copiado!',()=>{$('#bk').select();$('#bkm').textContent='Selecionei o texto: use Copiar do sistema.'})},
+ bkcopy:()=>{S.lastBackup=iso(today());save();navigator.clipboard?.writeText($('#bk').value).then(()=>$('#bkm').textContent='Copiado! Cole no app Notas ou mande para o seu e-mail.',()=>{$('#bk').select();$('#bkm').textContent='Selecionei o texto: use Copiar do sistema.'})},
  bkload:()=>{try{const o=JSON.parse($('#bk').value);if(!o||o.v!==1)throw 0;S=Object.assign(DEF(),o);save();closeSheet()}catch(e){$('#bkm').textContent='Esse texto não parece um backup do Lucidez.'}},
  install:()=>{desktop?.install.request().catch(()=>{})}};
  if(A[a])A[a]()});
@@ -580,7 +581,7 @@ const standalone=navigator.standalone===true||matchMedia('(display-mode: standal
 const isIOS=/iP(hone|ad|od)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
 function installGuide(){if(standalone||!isIOS)return;let seen=false;try{seen=sessionStorage.getItem('lz-inst')}catch(e){}if(seen)return;
  const d=document.createElement('div');d.className='inst';d.setAttribute('role','dialog');d.setAttribute('aria-label','Instalar o Lucidez');
- d.innerHTML=`<svg width="84" height="84" viewBox="0 0 256 256" aria-hidden="true"><rect width="256" height="256" rx="56" fill="#0A100F"/><path d="M36 206L108 96L146 146L176 108L222 206Z" fill="#3CC4A6"/><path d="M176 108V50" stroke="#F2F7F6" stroke-width="5"/><path d="M178 50L214 64L178 78Z" fill="#FF8A73"/></svg>
+ d.innerHTML=`<svg width="84" height="84" viewBox="0 0 256 256" aria-hidden="true"><rect width="256" height="256" rx="56" fill="#173F4D"/><path d="M36 206L108 96L146 146L176 108L222 206Z" fill="#7FB3C4"/><path d="M176 108V50" stroke="#E6EFF1" stroke-width="5"/><path d="M178 50L214 64L178 78Z" fill="#D3B678"/></svg>
  <h1 style="font-size:30px">Use o Lucidez como app</h1><p style="margin:0;color:var(--sub)">Você abriu pelo navegador. Instalado, ele abre em tela cheia, sem barra do Safari, direto do ícone.</p>
  <div class="tile stack" style="gap:12px"><div class="row"><span class="ic" style="background:var(--iconBg);color:var(--pri)"><b>1</b></span><span>Toque em <b>Compartilhar</b> (quadrado com seta) na barra do Safari</span></div><div class="row"><span class="ic" style="background:var(--iconBg);color:var(--pri)"><b>2</b></span><span>Escolha <b>Adicionar à Tela de Início</b></span></div><div class="row"><span class="ic" style="background:var(--iconBg);color:var(--pri)"><b>3</b></span><span>Abra pelo ícone <b>Lucidez</b> na sua tela</span></div></div>
  <p class="sm" style="margin:0">Atenção: os dados do navegador e do app instalado ficam separados. Se já registrou algo aqui, faça um backup em Jornada antes.</p>
