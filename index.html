@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <title>Lucidez</title>
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
@@ -33,6 +33,9 @@
 --r:Nunito,ui-rounded,-apple-system,sans-serif}
 :root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
 *{box-sizing:border-box;min-width:0}
+html,body{overscroll-behavior:none;touch-action:manipulation;-webkit-text-size-adjust:100%}
+body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+input,textarea,select{-webkit-user-select:text;user-select:text}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,sans-serif;overflow-x:clip;-webkit-tap-highlight-color:transparent}
 .app{max-width:520px;margin:0 auto;padding:calc(env(safe-area-inset-top) + 18px) 16px calc(env(safe-area-inset-bottom) + 110px)}
 .r{font-family:var(--r)}
@@ -513,6 +516,11 @@ document.addEventListener('input',e=>{if(e.target.id==='sx'&&SM){SM.extra=+e.tar
 document.addEventListener('click',e=>{if(e.target.closest&&e.target.closest('#tplus'))openReg()});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&$('#ov'))closeSheet()});
 
+/* ---------- sem zoom (sensação de app) ---------- */
+['gesturestart','gesturechange','gestureend'].forEach(t=>document.addEventListener(t,e=>e.preventDefault(),{passive:false}));
+document.addEventListener('touchmove',e=>{if(e.touches&&e.touches.length>1)e.preventDefault()},{passive:false});
+let lastT=0;document.addEventListener('touchend',e=>{const n=Date.now();if(n-lastT<300&&!e.target.closest('input,textarea,select'))e.preventDefault();lastT=n},{passive:false});
+document.addEventListener('dblclick',e=>e.preventDefault(),{passive:false});
 /* ---------- início ---------- */
 function markOpen(){const k=iso(today());if(!S.days.includes(k)){S.days.push(k);if(S.days.length>400)S.days=S.days.slice(-400);const st=streak();if(st>=7)unlock('streak7');if(st>=30)unlock('streak30');save()}if(S.setup)mission('open')}
 try{const l=localStorage.getItem(LS);if(l)S=Object.assign(DEF(),JSON.parse(l))}catch(e){}
