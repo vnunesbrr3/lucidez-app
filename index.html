@@ -9,8 +9,13 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Lucidez">
 <meta name="theme-color" content="#0A100F">
+<meta name="format-detection" content="telephone=no">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-180.png">
+<link rel="apple-touch-startup-image" media="(device-width: 440px) and (device-height: 956px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="splash-1320x2868.png">
+<link rel="apple-touch-startup-image" media="(device-width: 430px) and (device-height: 932px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="splash-1290x2796.png">
+<link rel="apple-touch-startup-image" media="(device-width: 402px) and (device-height: 874px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="splash-1206x2622.png">
+<link rel="apple-touch-startup-image" media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="splash-1179x2556.png">
 <link rel="icon" href="icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&display=swap">
@@ -37,7 +42,7 @@ html,body{overscroll-behavior:none;touch-action:manipulation;-webkit-text-size-a
 body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 input,textarea,select{-webkit-user-select:text;user-select:text;font-size:16px!important}
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,sans-serif;overflow-x:clip;-webkit-tap-highlight-color:transparent}
-.app{max-width:520px;margin:0 auto;padding:calc(env(safe-area-inset-top) + 18px) 16px calc(env(safe-area-inset-bottom) + 110px)}
+.app{max-width:520px;margin:0 auto;padding:calc(env(safe-area-inset-top) + 14px) 16px calc(env(safe-area-inset-bottom) + 110px)}
 .r{font-family:var(--r)}
 h1{font:800 26px/1.1 var(--r);margin:0}
 .hd{display:flex;justify-content:space-between;align-items:flex-end;gap:10px;margin-bottom:12px}
@@ -61,13 +66,25 @@ h1{font:800 26px/1.1 var(--r);margin:0}
 svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
 .bar{height:8px;border-radius:4px;background:var(--track);overflow:hidden}.bar>i{display:block;height:100%;border-radius:4px;background:var(--pri)}
 .li{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--track)}.li:last-child{border-bottom:0}
-.tab{position:fixed;left:0;right:0;bottom:0;background:var(--tile);border-top:1px solid var(--track);padding:8px 8px calc(env(safe-area-inset-bottom) + 10px);display:flex;justify-content:space-around;align-items:center;z-index:5}
+.tab{position:fixed;left:0;right:0;bottom:0;background:color-mix(in srgb,var(--tile) 82%,transparent);-webkit-backdrop-filter:blur(20px) saturate(1.6);backdrop-filter:blur(20px) saturate(1.6);border-top:1px solid var(--track);padding:8px 8px calc(env(safe-area-inset-bottom) + 10px);display:flex;justify-content:space-around;align-items:center;z-index:5}
 .tab button{background:none;border:0;color:var(--sub);font:600 11px var(--sys);font-family:inherit;display:flex;flex-direction:column;align-items:center;gap:3px;min-width:60px;min-height:44px;cursor:pointer}
 .tab button.on{color:var(--pri)}
 .tab .plus{width:58px;height:58px;border-radius:20px;background:var(--pri);border-bottom:5px solid var(--priD);color:var(--onpri);margin-top:-26px;justify-content:center;min-width:0}
 .tab .plus svg{width:26px;height:26px;stroke-width:2.4}
-.ov{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:20;display:flex;align-items:flex-end;justify-content:center}
-.sheet{background:var(--bg);width:100%;max-width:520px;max-height:94vh;overflow-y:auto;border-radius:28px 28px 0 0;padding:18px 16px calc(env(safe-area-inset-bottom) + 24px)}
+.ov{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:20;display:flex;align-items:flex-end;justify-content:center;animation:fadeIn .25s ease both}
+.ov.out{animation:fadeOut .22s ease both}.ov.out .sheet{animation:slideDown .24s cubic-bezier(.4,0,1,1) both}
+.sheet{background:var(--bg);width:100%;max-width:520px;max-height:94vh;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;border-radius:28px 28px 0 0;padding:8px 16px calc(env(safe-area-inset-bottom) + 24px);animation:slideUp .38s cubic-bezier(.2,.9,.25,1) both;will-change:transform}
+.grab{width:40px;height:5px;border-radius:3px;background:var(--border);margin:2px auto 12px;touch-action:none}
+@keyframes slideUp{from{transform:translateY(100%)}to{transform:none}}@keyframes slideDown{to{transform:translateY(100%)}}@keyframes fadeIn{from{background:rgba(0,0,0,0)}}@keyframes fadeOut{to{background:rgba(0,0,0,0)}}
+@keyframes toastIn{from{opacity:0;transform:translate(-50%,-12px) scale(.9)}to{opacity:1;transform:translate(-50%,0)}}
+@keyframes viewIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}.view{animation:viewIn .28s ease both}
+.tile,.hero,.ct,.card4,.key,.opt,.tab button,.li{transition:transform .12s ease}
+button.tile:active,.hero:active,.ct:active,.card4:active,.key:active,.opt:active,button.li:active{transform:scale(.97)}.tab button:active{transform:scale(.9)}
+.top{position:fixed;left:0;right:0;top:0;z-index:4;padding:calc(env(safe-area-inset-top) + 8px) 16px 10px;text-align:center;font:700 16px var(--sys);background:color-mix(in srgb,var(--bg) 80%,transparent);-webkit-backdrop-filter:blur(20px) saturate(1.6);backdrop-filter:blur(20px) saturate(1.6);border-bottom:1px solid var(--track);opacity:0;transform:translateY(-6px);transition:opacity .2s,transform .2s;pointer-events:none}.top.on{opacity:1;transform:none}
+.splash{min-height:70vh;display:flex;align-items:center;justify-content:center}
+.inst{position:fixed;inset:0;z-index:60;background:var(--bg);display:flex;flex-direction:column;justify-content:center;padding:32px 24px;gap:14px}
+img,svg{-webkit-user-drag:none}
+@media (prefers-reduced-motion:reduce){.sheet,.ov,.view,.ov.out,.ov.out .sheet{animation:none}}
 .sh{display:flex;align-items:center;gap:10px;margin-bottom:12px}
 .x{width:44px;height:44px;border-radius:22px;background:var(--tile);border:0;color:var(--ink);display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none}
 label.f{display:flex;flex-direction:column;gap:6px;font-size:13px;color:var(--sub);font-weight:600}
@@ -84,7 +101,7 @@ input:focus,select:focus,textarea:focus,button:focus-visible{outline:2px solid v
 .card4{min-height:66px;border-radius:18px;border:0;background:var(--tile);color:var(--ink);padding:10px 12px;text-align:left;font-family:inherit;cursor:pointer;display:flex;flex-direction:column;justify-content:center;gap:2px}
 .card4 b{font-size:15px}.card4 span{font-size:12px;color:var(--sub)}.card4.hl{outline:2px solid var(--pri)}
 .coral{background:var(--coralBg);color:var(--coralBgT);border-radius:22px;padding:16px}
-.toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom) + 96px);transform:translateX(-50%);background:var(--coral);color:var(--onCoral);font:800 15px var(--r);padding:10px 16px;border-radius:999px;z-index:40;pointer-events:none}
+.toast{position:fixed;left:50%;top:calc(env(safe-area-inset-top) + 8px);box-shadow:0 6px 20px rgba(0,0,0,.25);animation:toastIn .3s cubic-bezier(.2,.9,.25,1) both;transform:translateX(-50%);background:var(--coral);color:var(--onCoral);font:800 15px var(--r);padding:10px 16px;border-radius:999px;z-index:40;pointer-events:none}
 .wk{display:flex;justify-content:space-between}.wk span{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:11px;font-weight:600;color:var(--sub)}
 .wk i{width:22px;height:22px;border-radius:11px;background:var(--track);display:flex;align-items:center;justify-content:center;font-style:normal;color:var(--onCoral);font-size:12px}
 .wk i.on{background:var(--coral)}
@@ -99,7 +116,8 @@ input:focus,select:focus,textarea:focus,button:focus-visible{outline:2px solid v
 </style>
 </head>
 <body>
-<div class="app" id="app"><p class="sm" style="padding-top:40px;text-align:center">Carregando seu Lucidez…</p></div>
+<div class="top" id="top" aria-hidden="true"></div>
+<div class="app" id="app"><div class="splash"><svg width="88" height="88" viewBox="0 0 256 256" aria-label="Lucidez"><rect width="256" height="256" rx="56" fill="#0A100F"/><path d="M36 206L108 96L146 146L176 108L222 206Z" fill="#3CC4A6"/><path d="M176 108V50" stroke="#F2F7F6" stroke-width="5"/><path d="M178 50L214 64L178 78Z" fill="#FF8A73"/></svg></div></div>
 <nav class="tab" id="tabs" aria-label="Navegação principal"></nav>
 <div id="layer"></div>
 <script>
@@ -205,6 +223,7 @@ let TAB='hoje';
 const TABS=[['hoje','Hoje','sun'],['gastos','Gastos','rec'],['+','',''],['lib','Liberdade','mtn'],['jor','Jornada','tro']];
 function renderTabs(){$('#tabs').innerHTML=TABS.map(([k,l,i])=>k==='+'?`<button class="plus" id="tplus" aria-label="Registrar gasto ou pensar antes de comprar">${ic('plus',26,2.4)}</button>`:`<button data-t="${k}" class="${TAB===k?'on':''}" aria-current="${TAB===k?'page':'false'}">${ic(i,22)}${l}</button>`).join('');
  $('#tabs').classList.toggle('hide',!S.setup)}
+function animView(){const a=$('#app');a.classList.remove('view');void a.offsetWidth;a.classList.add('view')}
 function render(){renderTabs();const a=$('#app');
  if(!S.setup){a.innerHTML=welcome();return}
  const banner=(S.demo?`<div class="banner">Você está vendo <b>dados de exemplo</b>. <button class="lnk" data-a="reset" style="min-height:0">Começar com os meus</button></div>`:'')+(!cloud?`<div class="banner"></div>`:'');
@@ -291,8 +310,16 @@ function vJor(){const lv=level(),st=streak(),g=S.goals;
  <p class="sm" style="text-align:center">O Lume e este app são apoio para decisões, não consultoria financeira certificada.</p></div>`}
 
 /* ---------- sheets ---------- */
-function sheet(title,body,back){$('#layer').innerHTML=`<div class="ov" id="ov"><div class="sheet" role="dialog" aria-modal="true" aria-label="${esc(title)}"><div class="sh"><button class="x" data-a="${back||'close'}" aria-label="${back?'Voltar':'Fechar'}">${ic(back?'back':'x',20,2.2)}</button><span class="tt sp">${esc(title)}</span></div><div id="sb">${body}</div></div></div>`}
-function closeSheet(){$('#layer').innerHTML='';render()}
+function haptic(){try{let l=haptic.l;if(!l){l=document.createElement('label');l.style.display='none';l.innerHTML='<input type="checkbox" switch>';document.body.appendChild(l);haptic.l=l}l.click()}catch(e){}}
+function sheet(title,body,back){const ov=$('#ov');if(ov&&!ov.classList.contains('out')){const sh=ov.querySelector('.sheet');sh.setAttribute('aria-label',title);ov.querySelector('.sh').outerHTML=`<div class="sh"><button class="x" data-a="${back||'close'}" aria-label="${back?'Voltar':'Fechar'}">${ic(back?'back':'x',20,2.2)}</button><span class="tt sp">${esc(title)}</span></div>`;$('#sb').innerHTML=body;sh.scrollTop=0;return}
+ document.body.style.overflow='hidden';$('#layer').innerHTML=`<div class="ov" id="ov"><div class="sheet" role="dialog" aria-modal="true" aria-label="${esc(title)}"><div class="grab" aria-hidden="true"></div><div class="sh"><button class="x" data-a="${back||'close'}" aria-label="${back?'Voltar':'Fechar'}">${ic(back?'back':'x',20,2.2)}</button><span class="tt sp">${esc(title)}</span></div><div id="sb">${body}</div></div></div>`}
+function closeSheet(){const ov=$('#ov');document.body.style.overflow='';if(!ov||matchMedia('(prefers-reduced-motion: reduce)').matches){$('#layer').innerHTML='';render();return}
+ if(ov.classList.contains('out'))return;ov.classList.add('out');setTimeout(()=>{$('#layer').innerHTML='';render()},230)}
+/* arrastar para fechar */
+{let y0=null,dy=0,sh=null;
+ document.addEventListener('touchstart',e=>{sh=e.target.closest('.sheet');if(!sh)return;const onGrab=e.target.closest('.grab,.sh');if(!onGrab&&sh.scrollTop>0){sh=null;return}y0=e.touches[0].clientY;dy=0;sh.style.transition='none'},{passive:true});
+ document.addEventListener('touchmove',e=>{if(!sh||y0==null||e.touches.length>1)return;dy=Math.max(0,e.touches[0].clientY-y0);if(dy>0){sh.style.animation='none';sh.style.transform=`translateY(${dy}px)`;if(e.cancelable)e.preventDefault()}},{passive:false});
+ document.addEventListener('touchend',()=>{if(!sh)return;const s2=sh;sh=null;s2.style.transition='transform .25s cubic-bezier(.2,.9,.25,1)';if(dy>110){s2.style.transform='translateY(100%)';haptic();setTimeout(()=>{document.body.style.overflow='';$('#layer').innerHTML='';render()},220)}else s2.style.transform='';y0=null;dy=0})}
 /* registro */
 let R=null;
 function openReg(pre={}){R={str:pre.cents?String(pre.cents/100).replace('.',','):'',cents:pre.cents||0,merchant:pre.merchant||'',pay:pre.pay||'debit',cat:pre.cat||null,step:pre.cents?'cat':'amt',auto:false};regRender()}
@@ -463,8 +490,8 @@ function demo(){const t=today(),d=n=>{const x=new Date(t);x.setDate(x.getDate()-
 /* ---------- eventos ---------- */
 document.addEventListener('click',e=>{if(e.target.id==='ov'){closeSheet();return}
  const b=e.target.closest('[data-a],[data-t]');if(!b)return;
- if(b.dataset.t){TAB=b.dataset.t;$('#layer').innerHTML='';render();scrollTo(0,0);return}
- const a=b.dataset.a,id=b.dataset.id,v=b.dataset.v;
+ if(b.dataset.t){if(TAB!==b.dataset.t)haptic();TAB=b.dataset.t;$('#layer').innerHTML='';document.body.style.overflow='';render();animView();scrollTo(0,0);onScroll();return}
+ const a=b.dataset.a,id=b.dataset.id,v=b.dataset.v;if(['key','rok','rnext','rcat','rpay','wnext','pok','sadopt','lopt','feel','ncok','paybill','goaladd','salary','dsave'].includes(a))haptic();
  const A={close:closeSheet,setup:()=>S.setup?setupForm():wizard(0),wz:()=>wizStep(+v),ssave:setupSave,demo,
  reset:()=>{S=DEF();save();setupForm()},
  wnext:()=>{const i=+v;const e=WZ[i][3]();if(e)return $('#werr').textContent=e;wizStep(i+1)},wback:()=>{wizStep(Math.max(0,W.i-1))},wrule:()=>{W.rule=v;wizStep(W.i)},
@@ -513,9 +540,23 @@ document.addEventListener('click',e=>{if(e.target.id==='ov'){closeSheet();return
  if(A[a])A[a]()});
 document.addEventListener('input',e=>{if(e.target.id==='sx'&&SM){SM.extra=+e.target.value;clearTimeout(SM.t);SM.t=setTimeout(()=>{const y=$('.sheet').scrollTop;simRender();$('.sheet').scrollTop=y;$('#sx')?.focus()},120)}
  if(e.target.id==='rmer'&&R){const r=S.rules[normKey(e.target.value)];if(r&&catOf(r.cat)&&R.cat!==r.cat){R.cat=r.cat;R.auto=true;R.merchant=e.target.value;const pos=e.target.selectionStart;regRender();const i=$('#rmer');i.focus();i.setSelectionRange(pos,pos)}}});
-document.addEventListener('click',e=>{if(e.target.closest&&e.target.closest('#tplus'))openReg()});
+document.addEventListener('click',e=>{if(e.target.closest&&e.target.closest('#tplus')){haptic();openReg()}});
+const TT={hoje:'Hoje',gastos:'Seus potes',lib:'Liberdade',jor:'Jornada'};
+function onScroll(){const t=$('#top');if(!t)return;t.textContent=S.setup?TT[TAB]:'';t.classList.toggle('on',S.setup&&scrollY>70)}
+addEventListener('scroll',onScroll,{passive:true});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&$('#ov'))closeSheet()});
 
+/* ---------- aberto no navegador? sugerir instalar ---------- */
+const standalone=navigator.standalone===true||matchMedia('(display-mode: standalone)').matches;
+const isIOS=/iP(hone|ad|od)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+function installGuide(){if(standalone||!isIOS)return;let seen=false;try{seen=sessionStorage.getItem('lz-inst')}catch(e){}if(seen)return;
+ const d=document.createElement('div');d.className='inst';d.setAttribute('role','dialog');d.setAttribute('aria-label','Instalar o Lucidez');
+ d.innerHTML=`<svg width="84" height="84" viewBox="0 0 256 256" aria-hidden="true"><rect width="256" height="256" rx="56" fill="#0A100F"/><path d="M36 206L108 96L146 146L176 108L222 206Z" fill="#3CC4A6"/><path d="M176 108V50" stroke="#F2F7F6" stroke-width="5"/><path d="M178 50L214 64L178 78Z" fill="#FF8A73"/></svg>
+ <h1 style="font-size:30px">Use o Lucidez como app</h1><p style="margin:0;color:var(--sub)">Você abriu pelo navegador. Instalado, ele abre em tela cheia, sem barra do Safari, direto do ícone.</p>
+ <div class="tile stack" style="gap:12px"><div class="row"><span class="ic" style="background:var(--iconBg);color:var(--pri)"><b>1</b></span><span>Toque em <b>Compartilhar</b> (quadrado com seta) na barra do Safari</span></div><div class="row"><span class="ic" style="background:var(--iconBg);color:var(--pri)"><b>2</b></span><span>Escolha <b>Adicionar à Tela de Início</b></span></div><div class="row"><span class="ic" style="background:var(--iconBg);color:var(--pri)"><b>3</b></span><span>Abra pelo ícone <b>Lucidez</b> na sua tela</span></div></div>
+ <p class="sm" style="margin:0">Atenção: os dados do navegador e do app instalado ficam separados. Se já registrou algo aqui, faça um backup em Jornada antes.</p>
+ <button class="btn ghost full" id="instno">Continuar no navegador por agora</button>`;
+ document.body.appendChild(d);d.querySelector('#instno').onclick=()=>{try{sessionStorage.setItem('lz-inst','1')}catch(e){}d.remove()}}
 /* ---------- sem zoom (sensação de app) ---------- */
 ['gesturestart','gesturechange','gestureend'].forEach(t=>document.addEventListener(t,e=>e.preventDefault(),{passive:false}));
 document.addEventListener('touchmove',e=>{if(e.touches&&e.touches.length>1)e.preventDefault()},{passive:false});
@@ -524,7 +565,7 @@ document.addEventListener('dblclick',e=>e.preventDefault(),{passive:false});
 function markOpen(){const k=iso(today());if(!S.days.includes(k)){S.days.push(k);if(S.days.length>400)S.days=S.days.slice(-400);const st=streak();if(st>=7)unlock('streak7');if(st>=30)unlock('streak30');save()}if(S.setup)mission('open')}
 try{const l=localStorage.getItem(LS);if(l)S=Object.assign(DEF(),JSON.parse(l))}catch(e){}
 render();
-cloud=true;markOpen();render();
+cloud=true;markOpen();render();installGuide();
 try{navigator.storage&&navigator.storage.persist&&navigator.storage.persist()}catch(e){}
 if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
 let INST=false;
