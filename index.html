@@ -8,7 +8,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Lucidez">
-<meta name="theme-color" content="#0A100F">
+<meta name="theme-color" content="#0E0B24">
 <meta name="format-detection" content="telephone=no">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="apple-touch-icon" href="icon-180.png">
@@ -18,7 +18,7 @@
 <link rel="apple-touch-startup-image" media="(device-width: 393px) and (device-height: 852px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait)" href="splash-1179x2556.png">
 <link rel="icon" href="icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap">
 <style>
 /* VOICE: acolhedor, animado, honesto — nunca culpa
    IDEA: um caderno-bento de bolso que responde "quanto posso gastar hoje?"
@@ -26,22 +26,23 @@
    COLOUR and TYPE: menta + coral (recompensa) sobre noite/névoa; Nunito nos números, sistema no texto
    LAYOUT: coluna de celular, blocos bento, abas embaixo com botão central em relevo */
 :root{color-scheme:light dark;
---bg:light-dark(#F3F7F6,#0A100F);--tile:light-dark(#FFFFFF,#141C1B);--tile2:light-dark(#EEF4F2,#1A2523);
---ink:light-dark(#17302B,#F2F7F6);--sub:light-dark(#5F7773,#9FB3AF);
---pri:light-dark(#177A66,#3CC4A6);--priD:light-dark(#0D5243,#1E7D69);--onpri:light-dark(#FFFFFF,#04231C);
---coral:light-dark(#E8553F,#FF8A73);--coralT:light-dark(#C4432C,#FFA391);--coralBg:light-dark(#FDECE8,#3A1F1A);--coralBgT:light-dark(#9A2E1C,#FFC2B5);--onCoral:light-dark(#FFFFFF,#3A1208);
---amberBg:light-dark(#FAEEDA,#3A2E14);--amberT:light-dark(#854F0B,#F2C46B);
---track:light-dark(#E1EAE8,#1F2B29);--border:light-dark(#C9D8D4,#3E5450);--iconBg:light-dark(#E1F2EE,#123A31);
---sandBg:light-dark(#F4EEDF,#3A2E14);--sand:light-dark(#8A5A12,#F2C46B);--skyBg:light-dark(#E3EFF2,#12303A);--sky:light-dark(#2A6372,#7EC4D6);
---chip:light-dark(rgba(255,255,255,.2),rgba(4,35,28,.14));
---sky1:light-dark(#E1F2EE,#12201D);--mt1:light-dark(#BFE3D8,#1E3A34);--mt2:light-dark(#9FD3C4,#27493F);--mt3:light-dark(#A9D9CB,#223F38);
---r:Nunito,ui-rounded,-apple-system,sans-serif;--sys:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,sans-serif}
+--bg:light-dark(#F5F3FF,#0E0B24);--tile:light-dark(#FFFFFF,#18143A);--tile2:light-dark(#EFECFF,#221D4C);
+--ink:light-dark(#1C1640,#F3F1FF);--sub:light-dark(#6C66A0,#A9A3D6);
+--pri:light-dark(#2D1FA3,#8A7CFF);--priD:light-dark(#1A1170,#5A4BE0);--onpri:light-dark(#FFFFFF,#0E0B24);
+--coral:light-dark(#FFB020,#FFC83D);--coralT:light-dark(#A85A00,#FFD36E);--coralBg:light-dark(#FFF1D6,#3A2D0E);--coralBgT:light-dark(#8A4A00,#FFD98A);--onCoral:light-dark(#2A1B00,#2A1B00);
+--amberBg:light-dark(#FFE9E2,#3D1E22);--amberT:light-dark(#A33A1E,#FF9F8A);
+--track:light-dark(#E2DEFF,#2A2457);--border:light-dark(#CFC9F5,#3C3577);--iconBg:light-dark(#ECE9FF,#26205A);
+--sandBg:light-dark(#FFF1D6,#3A2D0E);--sand:light-dark(#A85A00,#FFD36E);--skyBg:light-dark(#DDF6EE,#0F3A33);--sky:light-dark(#0B7A5C,#4FE0B4);
+--chip:rgba(255,255,255,.16);
+--g1:linear-gradient(140deg,#2D1FA3,#5B3DF5);--g2:linear-gradient(140deg,#0E9F6E,#14B8A6);--g3:linear-gradient(140deg,#FFB020,#FF7A1A);
+--sky1:light-dark(#ECE9FF,#14102F);--mt1:light-dark(#D6D0FF,#2A2360);--mt2:light-dark(#BEB5FF,#352C78);--mt3:light-dark(#CBC4FF,#2F2770);
+--r:Sora,ui-rounded,-apple-system,sans-serif;--sys:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
 :root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
 *{box-sizing:border-box;min-width:0}
 html,body{overscroll-behavior:none;touch-action:manipulation;-webkit-text-size-adjust:100%}
 body{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 input,textarea,select{-webkit-user-select:text;user-select:text;font-size:16px!important}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 -apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,sans-serif;overflow-x:clip;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.45 var(--sys);overflow-x:clip;-webkit-tap-highlight-color:transparent}
 .app{max-width:520px;margin:0 auto;padding:calc(env(safe-area-inset-top) + 14px) 16px calc(env(safe-area-inset-bottom) + 110px)}
 .r{font-family:var(--r)}
 h1{font:800 26px/1.1 var(--r);margin:0}
@@ -51,11 +52,15 @@ h1{font:800 26px/1.1 var(--r);margin:0}
 .stack{display:flex;flex-direction:column;gap:10px}
 .g2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
 .g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
-.hero{background:var(--pri);color:var(--onpri);border-radius:26px;padding:20px;border:0;text-align:left;width:100%;font:inherit;cursor:pointer;display:block}
-.hero.warn{background:var(--amberBg);color:var(--amberT)}.hero.bad{background:var(--coralBg);color:var(--coralBgT)}
-.big{font:900 clamp(40px,12vw,52px)/1.05 var(--r);letter-spacing:-1.5px;margin:2px 0}
+.hero{background:var(--g1);color:#fff;border-radius:26px;padding:20px;border:0;text-align:left;width:100%;font:inherit;cursor:pointer;display:block}
+.hero.warn{background:linear-gradient(140deg,#C2410C,#FF7A1A);color:#fff}.hero.bad{background:linear-gradient(140deg,#7A2E3B,#B8485A);color:#fff}
+.wal{border:0;width:100%;text-align:left;font:inherit;color:#fff;border-radius:26px;padding:16px 18px;display:flex;flex-direction:column;cursor:pointer;position:relative;box-shadow:0 -8px 22px rgba(20,10,60,.28)}
+.wal .wh{display:flex;justify-content:space-between;font-size:13px;font-weight:600;opacity:.92}.wal .wb{font:800 26px/1.15 var(--r);letter-spacing:-.5px;margin-top:6px}.wal .ws{font-size:13px;opacity:.88;margin-top:auto}
+.xp{height:10px;border-radius:5px;background:var(--track);overflow:hidden}.xp>i{display:block;height:100%;border-radius:5px;background:var(--coral)}
+.pill{background:var(--coralBg);color:var(--coralBgT);border-radius:999px;padding:3px 8px;font-size:12px;font-weight:800;white-space:nowrap}
+.big{font:800 clamp(40px,12vw,52px)/1.05 var(--r);letter-spacing:-1.5px;margin:2px 0}
 .chip{display:inline-flex;align-items:center;gap:5px;border-radius:999px;padding:6px 11px;font-size:12px;font-weight:700;white-space:nowrap}
-.chip.h{background:var(--chip)}.chip.c{background:var(--coralBg);color:var(--coralBgT)}.chip.m{background:var(--iconBg);color:var(--pri)}
+.chip.h{background:var(--chip);color:#fff}.chip.c{background:var(--coralBg);color:var(--coralBgT)}.chip.m{background:var(--iconBg);color:var(--pri)}
 .row{display:flex;align-items:center;gap:12px}.sp{flex:1}
 .tt{font:800 17px/1.2 var(--r)}.num{font:800 22px/1.1 var(--r);white-space:nowrap}
 .btn{min-height:48px;padding:0 18px;border:0;border-radius:16px;background:var(--pri);border-bottom:5px solid var(--priD);color:var(--onpri);font:700 16px/1 var(--sys);font-family:inherit;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:transform .08s,border-width .08s}
@@ -206,7 +211,7 @@ const pts=()=>S.pts.reduce((s,p)=>s+p.p,0);
 const LV=['Iniciante','Atento','Consciente','Explorador','Estrategista','Focado','Lúcido','Imparável','Mestre do Ciclo','Livre'];
 function level(){const p=pts();const n=Math.min(10,Math.floor(p/100)+1);return{n,name:LV[n-1],from:(n-1)*100,to:n*100,p}}
 let TQ=Promise.resolve();function toast(t){TQ=TQ.then(()=>new Promise(r=>{const d=document.createElement('div');d.className='toast';d.textContent=t;document.body.appendChild(d);setTimeout(()=>{d.remove();r()},1500)}))}
-function addPts(p,r){S.pts.push({d:iso(today()),p,r});toast('+'+p+' lucidez')}
+function addPts(p,r){S.pts.push({d:iso(today()),p,r});toast('+'+p+' XP')}
 function confetti(){const w=document.createElement('div');w.className='conf';const cs=['#3CC4A6','#FF8A73','#F2C46B','#7EC4D6'];
  for(let i=0;i<40;i++){const b=document.createElement('i');b.style.left=Math.random()*100+'%';b.style.background=cs[i%4];b.style.animationDelay=Math.random()*.4+'s';w.appendChild(b)}document.body.appendChild(w);setTimeout(()=>w.remove(),2400)}
 const ACH={first_tx:'Primeiro registro',lume_no:'Desistiu com lucidez',debt_paid:'Primeira dívida quitada',streak7:'7 dias de sequência',streak30:'30 dias de sequência',plan:'Plano de liberdade adotado',saved1000:'R$ 1.000 economizados',map:'Dívidas mapeadas'};
@@ -234,26 +239,36 @@ function welcome(){return`<div class="stack" style="padding-top:20px">
  <div class="tile stack"><div class="tt">Vamos começar</div><p class="sm" style="margin:0">Leva 1 minuto. Você pode mudar tudo depois em Jornada → Configurações.</p>
  <button class="btn full" data-a="setup">Configurar com os meus números</button><button class="btn ghost full" data-a="demo">Explorar com dados de exemplo</button></div></div>`}
 function vHoje(){const k=calc(),c=k.c,lv=level(),h=new Date().getHours(),sau=h<12?'Bom dia':h<18?'Boa tarde':'Boa noite';
- const msg=k.state==='bad'?'Tudo bem, bora ajustar. Toque para ver o plano.':k.left<0?'Passou um pouco do dia. Tudo bem: o resto do ciclo se ajusta sozinho.':k.state==='warn'?'Hoje pede leveza. Que tal um dia sem delivery?':'Dia tranquilo. Tá voando.';
  const isPay=iso(c.start)===iso(today())&&!S.salaryDone[c.key];
- const pr=progress(),sm=sim(S.extra,S.strategy),st=streak(),ms=missions();
- const mon=today();mon.setDate(mon.getDate()-((mon.getDay()+6)%7));const week=[...Array(7)].map((_,i)=>{const d=new Date(mon);d.setDate(mon.getDate()+i);const on=S.days.includes(iso(d)),isT=iso(d)===iso(today());return`<span style="${isT?'color:var(--ink)':''}"><i class="${on?'on':''}" style="${d>today()?'opacity:.4':''}">${on?'✓':''}</i>${'STQQSSD'[i]}</span>`}).join('');
+ const pr=progress(),sm=sim(S.extra,S.strategy),st=streak(),ms=missions(),wk=weekOpen();
  const up=S.bills.map(b=>({n:b.name,a:b.amount,d:dueIn(b.day,c),p:(b.paid||{})[c.key]})).concat(S.debts.filter(d=>d.mode==='fixed'&&d.bal>0&&d.inst&&d.due&&!d.payroll).map(d=>({n:d.name,a:d.inst,d:dueIn(d.due,c),p:d.paidCycle===c.key}))).filter(x=>x.d&&!x.p&&ddiff(x.d,today())<=3&&ddiff(x.d,today())>=0);
- return`<div class="hd"><div><div class="sm">${new Date().toLocaleDateString('pt-BR',{weekday:'long',day:'numeric',month:'long'})}</div><h1>${sau}${S.name?', '+esc(S.name):''}</h1></div><span class="chip c">${ic('spark',14,2)}${lv.p} lucidez</span></div>
+ const heroTop=k.state==='bad'?`${ic('pause',14,2.2)} Pausa estratégica`:`${ic('target',14,2)} Missão do dia`;
+ const heroLine=k.state==='bad'?'Tudo bem, bora ajustar. Toque para ver o plano.':k.left<0?'Passou um pouco hoje. O resto do ciclo se ajusta sozinho.':`Fique dentro disso e ganhe <b style="color:#FFC83D">+30 XP</b> amanhã`;
+ const freeTxt=S.debts.length?(sm.months==null?'revise as parcelas':sm.months===0?'Você está livre!':freeDate(sm.months)):'Mapear dívidas';
+ return`<div class="row" style="gap:10px;margin-bottom:6px"><button data-t="jor" aria-label="Nível ${lv.n}" style="width:46px;height:46px;border-radius:16px;border:0;background:var(--g1);color:#FFC83D;font:800 18px var(--r);flex:none;cursor:pointer">${lv.n}</button>
+ <div class="sp"><div class="row" style="justify-content:space-between;font-size:12px;font-weight:600"><span class="r">Nível ${lv.n} · ${lv.name}</span><span class="sm" style="font-size:12px">${lv.n>=10?lv.p:lv.p-lv.from+'/'+(lv.to-lv.from)} XP</span></div><div class="xp" style="margin-top:6px"><i style="width:${lv.n>=10?100:((lv.p-lv.from)/(lv.to-lv.from)*100)}%"></i></div></div>
+ <span class="chip c" style="font-size:14px;font-weight:800">${ic('flame',16,2)}${st}</span></div>
+ <div class="sm" style="margin:10px 0 10px">${sau}${S.name?', '+esc(S.name):''} · ${new Date().toLocaleDateString('pt-BR',{weekday:'long',day:'numeric',month:'long'})}</div>
  <div class="stack">
- ${(!S.bills.length||!S.debts.length||!S.tx.length)&&!S.demo?`<div class="tile stack" style="gap:6px"><span class="tt">Primeiros passos</span><span class="sm" style="margin-top:-4px">Faça um por vez, no seu ritmo.</span>${[[!S.tx.length,'Registrar seu primeiro gasto','reg0'],[!S.bills.length,'Cadastrar contas fixas (luz, internet…)','bill0'],[!S.debts.length,'Mapear a primeira dívida','debt0']].filter(x=>x[0]).map(x=>`<button class="btn ghost full" style="justify-content:space-between" data-a="${x[2]}">${x[1]} ${ic('chev',18)}</button>`).join('')}</div>`:''}
+ ${(!S.bills.length||!S.debts.length||!S.tx.length)&&!S.demo?`<div class="tile stack" style="gap:6px"><span class="tt">Primeiros passos</span><span class="sm" style="margin-top:-4px">Cada um vale XP. Um por vez.</span>${[[!S.tx.length,'Registrar seu primeiro gasto','reg0'],[!S.bills.length,'Cadastrar contas fixas (luz, internet…)','bill0'],[!S.debts.length,'Mapear a primeira dívida','debt0']].filter(x=>x[0]).map(x=>`<button class="btn ghost full" style="justify-content:space-between" data-a="${x[2]}">${x[1]} ${ic('chev',18)}</button>`).join('')}</div>`:''}
  ${isPay?`<div class="coral row"><div class="sp"><div class="tt">Dia do pagamento!</div><div style="font-size:13px">Salário caiu? Some ${brl0(S.salary)} ao saldo em 1 toque.</div></div><button class="btn" data-a="salary">Somar</button></div>`:''}
- <button class="hero ${k.state==='ok'?'':k.state}" data-a="breakdown"><div style="font-size:14px;font-weight:600;display:flex;align-items:center;gap:6px">${k.state==='bad'?ic('pause',16,2.2)+' Hoje é dia de pausa':'Pode gastar hoje'}</div>
- <div class="big">${brl(k.state==='bad'?k.free:k.left)}</div><div style="font-size:13px">${msg}</div>
- <div style="font-size:13px;margin-top:2px">próximo salário: ${c.next.toLocaleDateString('pt-BR',{weekday:'long',day:'numeric',month:'numeric'})} · faltam ${c.left} ${c.left===1?'dia':'dias'}</div>
- <div class="row" style="gap:8px;margin-top:10px;flex-wrap:wrap"><span class="chip h">Gasto hoje: ${brl0(k.spentToday)}</span>${S.vr?`<span class="chip h">VR ${brl0(S.vrBal)}</span>`:''}<span class="sp"></span><span style="font-size:13px;font-weight:700">ver a conta ›</span></div></button>
- <div class="g2"><button class="tile stack" style="border:0;text-align:left;color:var(--ink);font:inherit;cursor:pointer;gap:6px" data-t="lib"><span class="sm row" style="gap:6px">${ic('mtn',16)}Liberdade</span>${ring(pr,70)}<span class="tt">${S.debts.length?(sm.months==null?'revise as parcelas':sm.months===0?'Livre!':'faltam '+sm.months+' meses'):'mapear dívidas ›'}</span></button>
- <div class="tile stack" style="gap:8px"><span class="sm row" style="gap:6px">${ic('flame',16)}Sequência</span><span class="r" style="font-size:30px;font-weight:900">${st} ${st===1?'dia':'dias'}</span><span class="sm" style="margin-top:-6px">esta semana</span><div class="wk">${week}</div></div></div>
+ <div>
+ <button class="hero ${k.state==='ok'?'':k.state}" data-a="breakdown" style="position:relative;overflow:hidden;z-index:1"><span style="position:absolute;right:-34px;top:-34px;width:140px;height:140px;border-radius:70px;background:rgba(255,200,61,.18)"></span>
+ <span class="chip h" style="position:relative">${heroTop}</span>
+ <div style="font-size:14px;margin-top:12px;opacity:.85">${k.state==='bad'?'Hoje é dia de pausa':'Gaste no máximo'}</div>
+ <div class="big">${brl(k.state==='bad'?k.free:k.left)}</div>
+ <div style="font-size:13px;opacity:.92">${heroLine}</div>
+ <div class="row" style="margin-top:10px;font-size:13px;opacity:.85"><span class="sp">salário em ${c.left} ${c.left===1?'dia':'dias'}${S.vr?' · VR '+brl0(S.vrBal):''}</span><span style="font-weight:700">ver a conta ›</span></div></button>
+ <div style="height:10px"></div>
+ <button class="wal" data-t="lib" style="background:var(--g2);min-height:128px;z-index:1"><span class="wh"><span>Liberdade</span><span>${Math.round(pr*100)}% quitado</span></span><span class="wb">${freeTxt.replace(/^./,x=>x.toUpperCase())}</span><span class="ws">${S.debts.length&&sm.months?'faltam '+sm.months+' meses':'toque para mapear'}</span></button>
+ <button class="wal" data-t="jor" style="background:var(--g3);min-height:112px;margin-top:-44px;z-index:2"><span class="wh"><span>Sequência · baú semanal</span><span>${wk>=7?'baú aberto!':'baú em '+(7-wk)+(7-wk===1?' dia':' dias')}</span></span><span class="wb">${wk} de 7 dias</span><span class="ws">${st} ${st===1?'dia seguido':'dias seguidos'} · abra o app todo dia</span></button>
+ </div>
  <button class="tile row" style="border:0;width:100%;text-align:left;color:var(--ink);font:inherit;cursor:pointer" data-a="balance"><span class="ic" style="background:var(--iconBg);color:var(--pri)">${ic('wallet')}</span><span class="sp"><span class="sm">Saldo em conta</span><br><span class="num">${brl(S.balance)}</span><br><span class="sm">Cartão em aberto: ${brl0(S.cardOpen)}</span></span><span style="color:var(--pri);font-weight:700;font-size:14px;white-space:nowrap">Atualizar ›</span></button>
- <div class="tile stack" style="gap:4px"><div class="row"><span class="tt sp">Missões de hoje</span><span style="font-size:13px;font-weight:700;color:var(--coralT)">${ms.filter(m=>m.done).length} de 3</span></div>
- ${ms.map(m=>`<button class="row" style="min-height:44px;gap:10px;width:100%;background:none;border:0;color:var(--ink);font:inherit;text-align:left;cursor:pointer;padding:0" data-a="mgo" data-v="${m.id}"><span class="ic" style="width:24px;height:24px;border-radius:8px;${m.done?'background:var(--pri);color:var(--onpri)':'border:2px solid var(--border)'}">${m.done?ic('check',14,3):''}</span><span class="sp" style="font-size:14px;${m.done?'text-decoration:line-through;color:var(--sub)':''}">${m.t}</span><span style="font-size:13px;font-weight:700;color:var(--coralT)">+${m.p}</span>${m.done?'':ic('chev',16)}</button>`).join('')}</div>
- ${up.length?`<div class="tile"><div class="sm" style="margin-bottom:4px">Próximos 3 dias</div>${up.map(u=>`<div class="li"><span class="sp">${esc(u.n)}</span><span class="sm">${u.d.toLocaleDateString('pt-BR',{day:'numeric',month:'short'})}</span><b>${brl0(u.a)}</b></div>`).join('')}<div class="sm" style="margin-top:6px">Já estão reservados no "pode gastar hoje".</div></div>`:''}
+ <div class="tile stack" style="gap:2px;padding:10px 16px"><div class="row" style="padding:4px 0"><span class="tt sp">Missões de hoje</span><span class="sm" style="font-weight:700">${ms.filter(m=>m.done).length}/3</span></div>
+ ${ms.map((m,i)=>`<button class="row" style="min-height:46px;gap:12px;width:100%;background:none;border:0;border-top:1px solid var(--track);color:var(--ink);font:inherit;text-align:left;cursor:pointer;padding:0" data-a="mgo" data-v="${m.id}"><span class="ic" style="width:26px;height:26px;border-radius:9px;font-size:12px;font-weight:800;${m.done?'background:var(--g1);color:#FFC83D':'background:var(--tile2);color:var(--pri)'}">${m.done?ic('check',14,3):i+1}</span><span class="sp" style="font-size:15px;font-weight:500;${m.done?'text-decoration:line-through;color:var(--sub)':''}">${m.t}</span><span class="pill">+${m.p} XP</span></button>`).join('')}</div>
+ ${up.length?`<div class="tile"><div class="sm" style="margin-bottom:4px">Próximos 3 dias</div>${up.map(u=>`<div class="li"><span class="sp">${esc(u.n)}</span><span class="sm">${u.d.toLocaleDateString('pt-BR',{day:'numeric',month:'short'})}</span><b>${brl0(u.a)}</b></div>`).join('')}<div class="sm" style="margin-top:6px">Já estão reservados na missão do dia.</div></div>`:''}
  </div>`}
+function weekOpen(){const mon=today();mon.setDate(mon.getDate()-((mon.getDay()+6)%7));let n=0;for(let i=0;i<7;i++){const d=new Date(mon);d.setDate(mon.getDate()+i);if(S.days.includes(iso(d)))n++}return n}
 function ring(p,s){const r=s/2-7,C=2*Math.PI*r;return`<svg width="${s}" height="${s}" viewBox="0 0 ${s} ${s}" role="img" aria-label="${Math.round(p*100)}% da dívida quitada"><circle cx="${s/2}" cy="${s/2}" r="${r}" fill="none" stroke="var(--track)" stroke-width="10"/><circle cx="${s/2}" cy="${s/2}" r="${r}" fill="none" stroke="var(--coral)" stroke-width="10" stroke-linecap="round" stroke-dasharray="${(C*p).toFixed(1)} ${C.toFixed(1)}" transform="rotate(-90 ${s/2} ${s/2})"/><text x="${s/2}" y="${s/2+5}" text-anchor="middle" font-size="15" font-weight="800" fill="var(--ink)" font-family="Nunito,sans-serif">${Math.round(p*100)}%</text></svg>`}
 const JAR='M10 14h36v6c4 3 6 7 6 12v26c0 6-5 10-10 10H14c-5 0-10-4-10-10V32c0-5 2-9 6-12z';
 function jar(id,pct,liq,lid,w,h,bg){const y=70-pct*50;return`<svg width="${w}" height="${h}" viewBox="0 0 56 72" aria-hidden="true"><defs><clipPath id="${id}"><path d="${JAR}"/></clipPath></defs><path d="${JAR}" fill="${bg||'var(--tile2)'}"/><g clip-path="url(#${id})"><path d="M0 ${y} q7 -5 14 0 t14 0 t14 0 t14 0 V72 H0 Z" fill="${liq}"/></g><path d="${JAR}" fill="none" stroke="var(--border)" stroke-width="1.8"/><rect x="8" y="4" width="40" height="10" rx="4" fill="${lid}"/></svg>`}
@@ -265,7 +280,7 @@ function vGastos(){const c=cycle(),pi=potInfo(c),freeSum=pi.reduce((s,p)=>s+Math
  const txs=S.tx.filter(x=>x.date>=c.key).slice().reverse();
  return`<div class="hd"><div><div class="sm">Ciclo ${c.start.toLocaleDateString('pt-BR',{day:'numeric',month:'numeric'})} → ${new Date(c.next-864e5).toLocaleDateString('pt-BR',{day:'numeric',month:'numeric'})} · faltam ${c.left} dias</div><h1>Seus potes</h1></div><span class="chip m">${brl0(freeSum)} livres</span></div>
  <div class="stack">
- <button class="hero row" style="gap:16px" data-a="pot" data-id="${ess.id}"><span style="background:var(--chip);border-radius:20px;padding:8px 10px;display:flex">${jar('jbig',ess.pct,'var(--bg)','var(--onpri)',70,90,'rgba(255,255,255,.35)')}</span><span class="stack" style="gap:2px"><span style="font-weight:600">${esc(ess.name)}</span><span class="big" style="font-size:36px">${brl0(ess.rest)}</span><span style="font-size:13px">restam de ${brl0(ess.budget)}</span></span></button>
+ <button class="hero row" style="gap:16px" data-a="pot" data-id="${ess.id}"><span style="background:var(--chip);border-radius:20px;padding:8px 10px;display:flex">${jar('jbig',ess.pct,'rgba(255,255,255,.92)','#FFC83D',70,90,'rgba(255,255,255,.22)')}</span><span class="stack" style="gap:2px"><span style="font-weight:600">${esc(ess.name)}</span><span class="big" style="font-size:36px">${brl0(ess.rest)}</span><span style="font-size:13px">restam de ${brl0(ess.budget)}</span></span></button>
  <div class="g2">${others.map((p,i)=>card(p,i)).join('')}${vrCard}</div>
  <div class="tile"><div class="row"><span class="tt sp">Cartão de crédito</span><b class="num" style="font-size:18px">${brl(S.cardOpen)}</b></div><div class="sm">Compras no crédito já saem do "pode gastar hoje" na hora.</div>${S.cardOpen>0?`<button class="btn ghost full" style="margin-top:10px" data-a="paycard">Paguei a fatura</button>`:''}</div>
  <div class="tile"><div class="row"><span class="tt sp">Contas fixas</span><button class="lnk" data-a="bill">+ Adicionar</button></div>
@@ -298,7 +313,7 @@ function vLib(){const p=progress(),s=sim(S.extra,S.strategy),ds=orderedDebts();
  ${S.extra?`<div class="sm" style="text-align:center">Plano atual: ${brl0(S.extra)} extra por mês.</div>`:''}</div>`}
 function vJor(){const lv=level(),st=streak(),g=S.goals;
  return`<div class="hd"><h1>Jornada</h1><span class="chip c">${ic('flame',14,2)}${st} dias</span></div><div class="stack">
- <div class="hero"><div style="font-weight:600">Nível ${lv.n} · ${lv.name}</div><div class="big" style="font-size:40px">${lv.p} lucidez</div><div class="bar" style="background:var(--chip);margin-top:8px"><i style="width:${lv.n>=10?100:((lv.p-lv.from)/(lv.to-lv.from)*100)}%;background:var(--onpri)"></i></div><div style="font-size:13px;margin-top:6px">${lv.n>=10?'Nível máximo':(lv.to-lv.p)+' para o próximo nível'}</div></div>
+ <div class="hero"><div style="font-weight:600">Nível ${lv.n} · ${lv.name}</div><div class="big" style="font-size:40px">${lv.p} XP</div><div class="bar" style="background:var(--chip);margin-top:8px"><i style="width:${lv.n>=10?100:((lv.p-lv.from)/(lv.to-lv.from)*100)}%;background:var(--onpri)"></i></div><div style="font-size:13px;margin-top:6px">${lv.n>=10?'Nível máximo':(lv.to-lv.p)+' para o próximo nível'}</div></div>
  <div class="g2"><div class="tile"><div class="sm">Economizado com lucidez</div><div class="num" style="color:var(--pri)">${brl0(S.saved)}</div></div><div class="tile"><div class="sm">Dívidas quitadas</div><div class="num">${S.debts.filter(d=>d.bal<=0).length} de ${S.debts.length}</div></div></div>
  <div class="tile"><div class="row"><span class="tt sp">Metas de compra</span></div>${g.length?g.map(x=>`<div class="li"><span class="sp"><b style="font-weight:600">${esc(x.title)}</b><div class="bar" style="margin:6px 0"><i style="width:${Math.min(100,x.saved/x.price*100)}%"></i></div><span class="sm">${brl0(x.saved)} de ${brl0(x.price)} · ${brl0(x.weekly)}/semana</span></span>${x.saved>=x.price?`<span class="chip m">Pronta!</span>`:`<button class="opt" data-a="goaladd" data-id="${x.id}">+ ${brl0(x.weekly)}</button>`}</div>`).join(''):'<p class="sm">Quando o Lume te ajudar a planejar uma compra, a meta aparece aqui.</p>'}</div>
  <div class="tile"><div class="tt" style="margin-bottom:8px">Conquistas</div><div class="g2">${Object.entries(ACH).map(([k,t])=>`<div class="row" style="gap:8px;opacity:${S.ach[k]?1:.45}"><span class="ic" style="width:34px;height:34px;background:${S.ach[k]?'var(--coralBg)':'var(--tile2)'};color:${S.ach[k]?'var(--coralT)':'var(--sub)'}">${ic('tro',18)}</span><span style="font-size:13px;font-weight:600">${t}</span></div>`).join('')}</div></div>
@@ -334,9 +349,9 @@ function regRender(){if(R.step==='done')return regDone();
  <label class="f">Onde foi? (opcional, ajuda o app a aprender)<input id="rmer" placeholder="Ex.: iFood" value="${esc(R.merchant)}" autocomplete="off" enterkeyhint="done"></label>
  <div class="row"><span class="tt sp">Categoria</span>${R.auto?`<span class="chip m">${ic('spark',14,2)}aprendida</span>`:''}</div>
  <div class="g3">${cats.map(c=>{const t=TINT[c.tint]||TINT.neutral;return`<button class="ct ${R.cat===c.id?'on':''}" data-a="rcat" data-id="${c.id}"><span class="ic" style="width:36px;height:36px;border-radius:12px;background:${t[0]};color:${t[1]}">${ic(c.icon)}</span>${esc(c.name)}</button>`}).join('')}<button class="ct new" data-a="newcat"><span class="ic" style="width:36px;height:36px;border-radius:12px;background:var(--tile)">${ic('plus')}</span>Nova categoria</button></div>
- <button class="btn full" style="min-height:58px" data-a="rok">Confirmar · +5 lucidez</button><p class="sm" id="rerr" role="alert" style="margin:0;color:var(--coralT)"></p></div>`,'rbackamt')}
+ <button class="btn full" style="min-height:58px" data-a="rok">Confirmar · +5 XP</button><p class="sm" id="rerr" role="alert" style="margin:0;color:var(--coralT)"></p></div>`,'rbackamt')}
 function regDone(){const k=calc(),ct=catOf(R.cat),days=freedomDays(R.cents);
- sheet('Registrado',`<div class="stack"><div class="hero row" style="gap:14px;cursor:default"><span class="ic" style="width:52px;height:52px;border-radius:18px;background:var(--chip)">${ic('check',28,2.6)}</span><span><span class="r" style="font-size:22px;font-weight:900">Registrado!</span><br><span style="font-size:14px;font-weight:600">${esc(ct?.name||'')} · +5 lucidez</span></span></div>
+ sheet('Registrado',`<div class="stack"><div class="hero row" style="gap:14px;cursor:default"><span class="ic" style="width:52px;height:52px;border-radius:18px;background:var(--chip)">${ic('check',28,2.6)}</span><span><span class="r" style="font-size:22px;font-weight:900">Registrado!</span><br><span style="font-size:14px;font-weight:600">${esc(ct?.name||'')} · +5 XP</span></span></div>
  <div class="g2"><div class="tile"><div class="sm">Pode gastar hoje</div><div class="num">${brl(k.left)}</div></div><div class="tile"><div class="sm">Liberdade</div><div class="num" style="color:var(--coralT)">${S.debts.some(d=>d.bal>0)?'+'+days.toFixed(1).replace('.',',')+' dia':'—'}</div></div></div>
  ${ct?.imp?`<div class="coral stack"><span class="row" style="gap:6px;font-size:13px;font-weight:700">${ic('spark',15,2)}Pergunta rápida do Lume</span><span class="r" style="font-size:19px;font-weight:800">Esse ${esc(ct.name.toLowerCase())} resolveu uma necessidade ou foi impulso?</span><div class="row" style="gap:8px;flex-wrap:wrap">${['Necessidade','Impulso','Ansiedade'].map(f=>`<button class="opt" data-a="feel" data-v="${f}">${f}</button>`).join('')}</div><span style="font-size:12px" id="feelr">Sem julgamento: isso só ajuda a enxergar seus gatilhos.</span></div>`:''}
  <div class="g2"><button class="btn ghost" data-a="regagain">Registrar outro</button><button class="btn" data-a="close">Pronto</button></div></div>`)}
@@ -344,7 +359,7 @@ function regConfirm(){if(!R.cents)return $('#rerr').textContent='Digite o valor 
  const key=normKey(R.merchant);const x={id:uid(),amt:R.cents,date:iso(today()),merchant:R.merchant.trim(),cat:R.cat,pay:R.pay};S.tx.push(x);
  if(R.pay==='debit')S.balance-=R.cents;else if(R.pay==='credit')S.cardOpen+=R.cents;else S.vrBal-=R.cents;
  if(key){const r=S.rules[key]||{cat:R.cat,n:0};r.n=r.cat===R.cat?r.n+1:1;r.cat=R.cat;S.rules[key]=r}
- addPts(5,'registro');mission('reg');unlock('first_tx');R.lastTx=x.id;R.step='done';save();regDone()}
+ addPts(5,'registro');mission('reg');try{const c=calc();S.dstat=S.dstat||{};S.dstat[iso(today())]=Object.assign(S.dstat[iso(today())]||{},{budget:Math.max(0,c.dayBudget),spent:c.spentToday})}catch(e){}unlock('first_tx');R.lastTx=x.id;R.step='done';save();regDone()}
 /* categoria nova */
 function newCat(){let ic0='heart',tn='mint';const draw=()=>sheet('Nova categoria',`<div class="stack"><label class="f">Nome<input id="ncn" maxlength="24" placeholder="Ex.: Pets"></label>
  <div class="sm">Ícone</div><div class="g3" style="grid-template-columns:repeat(6,minmax(0,1fr))">${ICONS.map(i=>`<button class="ct ${i===ic0?'on':''}" style="min-height:52px" data-a="nci" data-v="${i}" aria-label="Ícone ${i}">${ic(i)}</button>`).join('')}</div>
@@ -439,7 +454,7 @@ function simRender(){const monthly=SM.extra+(SM.on.d?SM.deliv:0);const lump=SM.o
  <button class="card4 ${SM.on.l?'hl':''}" data-a="ssrc" data-v="l"><b>Parte do 13º salário</b><span>pagamento único de ${brl0(SM.lump)}</span></button></div>
  <div class="tile stack"><span style="font-weight:700">Ordem de ataque</span><div class="seg"><button class="${SM.strat==='snowball'?'on':''}" data-a="sstr" data-v="snowball">Bola de neve</button><button class="${SM.strat==='avalanche'?'on':''}" data-a="sstr" data-v="avalanche">Avalanche</button></div>
  <span class="sm">${SM.strat==='snowball'?'Menor dívida primeiro: vitórias rápidas que dão gás.':'Maior juros primeiro: economiza mais dinheiro.'} ${(()=>{const o=sim(monthly,SM.strat==='snowball'?'avalanche':'snowball',lump);return o.months===nw&&Math.abs(o.interest-n.interest)<100?'No seu caso as duas dão praticamente o mesmo resultado.':'A outra ordem: '+freeDate(o.months)+', '+brl0(o.interest)+' de juros.'})()}</span></div>
- <button class="btn full" style="min-height:58px" data-a="sadopt">Adotar este plano · +50 lucidez</button>
+ <button class="btn full" style="min-height:58px" data-a="sadopt">Adotar este plano · +50 XP</button>
  ${lump?'<p class="sm" style="margin:0">Quando o 13º cair, registre como pagamento extra na dívida da vez.</p>':''}</div>`,'close')}
 
 /* setup em passos */
@@ -562,7 +577,10 @@ function installGuide(){if(standalone||!isIOS)return;let seen=false;try{seen=ses
 document.addEventListener('touchmove',e=>{if(e.touches&&e.touches.length>1)e.preventDefault()},{passive:false});
 document.addEventListener('dblclick',e=>e.preventDefault(),{passive:false});
 /* ---------- início ---------- */
-function markOpen(){const k=iso(today());if(!S.days.includes(k)){S.days.push(k);if(S.days.length>400)S.days=S.days.slice(-400);const st=streak();if(st>=7)unlock('streak7');if(st>=30)unlock('streak30');save()}if(S.setup)mission('open')}
+function markOpen(){const k=iso(today());
+ try{if(S.setup){const st=S.dstat||{};const y=new Date(today());y.setDate(y.getDate()-1);const yk=iso(y);if(st[yk]&&!st[yk].paid&&st[yk].spent<=st[yk].budget&&st[yk].budget>0){st[yk].paid=1;setTimeout(()=>addPts(30,'missão do dia'),1200)}
+  const c=calc();st[k]=Object.assign(st[k]||{},{budget:Math.max(0,c.dayBudget),spent:c.spentToday});for(const d of Object.keys(st))if(d<iso(new Date(Date.now()-864e6)))delete st[d];S.dstat=st}}catch(e){}
+ if(!S.days.includes(k)){S.days.push(k);const mon=today();mon.setDate(mon.getDate()-((mon.getDay()+6)%7));S.chest=S.chest||{};if(weekOpen()>=7&&!S.chest[iso(mon)]){S.chest[iso(mon)]=1;setTimeout(()=>{addPts(50,'baú');confetti();toast('Baú semanal aberto!')},1500)}if(S.days.length>400)S.days=S.days.slice(-400);const st=streak();if(st>=7)unlock('streak7');if(st>=30)unlock('streak30');save()}if(S.setup)mission('open')}
 try{const l=localStorage.getItem(LS);if(l)S=Object.assign(DEF(),JSON.parse(l))}catch(e){}
 render();
 cloud=true;markOpen();render();installGuide();
