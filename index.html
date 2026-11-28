@@ -85,7 +85,7 @@ svg.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stro
 @keyframes viewIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}.view{animation:viewIn .28s ease both}
 .tile,.hero,.ct,.card4,.key,.opt,.tab button,.li{transition:transform .12s ease}
 button.tile:active,.hero:active,.ct:active,.card4:active,.key:active,.opt:active,button.li:active{transform:scale(.97)}.tab button:active{transform:scale(.9)}
-.top{position:fixed;left:0;right:0;top:0;z-index:4;padding:calc(env(safe-area-inset-top) + 8px) 16px 10px;text-align:center;font:700 16px var(--sys);background:color-mix(in srgb,var(--bg) 80%,transparent);-webkit-backdrop-filter:blur(20px) saturate(1.6);backdrop-filter:blur(20px) saturate(1.6);border-bottom:1px solid var(--track);opacity:0;transform:translateY(-6px);transition:opacity .2s,transform .2s;pointer-events:none}.top.on{opacity:1;transform:none}
+.top{position:fixed;left:0;right:0;top:0;z-index:4;padding:calc(env(safe-area-inset-top) + 8px) 16px 10px;text-align:center;font:700 16px var(--sys);background:color-mix(in srgb,var(--bg) 80%,transparent);-webkit-backdrop-filter:blur(20px) saturate(1.6);backdrop-filter:blur(20px) saturate(1.6);border-bottom:1px solid var(--track);opacity:0;visibility:hidden;-webkit-backdrop-filter:none;backdrop-filter:none;transform:translateY(-100%);transition:opacity .2s,transform .2s,visibility 0s .2s;pointer-events:none}.top.on{opacity:1;visibility:visible;-webkit-backdrop-filter:blur(20px) saturate(1.6);backdrop-filter:blur(20px) saturate(1.6);transform:none;transition:opacity .2s,transform .2s,visibility 0s}
 .splash{min-height:70vh;display:flex;align-items:center;justify-content:center}
 .inst{position:fixed;inset:0;z-index:60;background:var(--bg);display:flex;flex-direction:column;justify-content:center;padding:32px 24px;gap:14px}
 img,svg{-webkit-user-drag:none}
@@ -254,8 +254,9 @@ function vHoje(){const k=calc();try{S.dstat=S.dstat||{};const tk=iso(today());S.
  const isPay=iso(c.start)===iso(today())&&!S.salaryDone[c.key];
  const pr=progress(),sm=sim(S.extra,S.strategy),st=streak(),ms=missions(),wk=weekOpen();
  const up=S.bills.map(b=>({n:b.name,a:b.amount,d:dueIn(b.day,c),p:(b.paid||{})[c.key]})).concat(S.debts.filter(d=>d.mode==='fixed'&&d.bal>0&&d.inst&&d.due&&!d.payroll).map(d=>({n:d.name,a:d.inst,d:dueIn(d.due,c),p:d.paidCycle===c.key}))).filter(x=>x.d&&!x.p&&ddiff(x.d,today())<=3&&ddiff(x.d,today())>=0);
- const heroTop=k.state==='bad'?`${ic('pause',14,2.2)} Pausa estratégica`:`${ic('target',14,2)} Missão do dia`;
- const heroLine=k.state==='bad'?'Tudo bem, bora ajustar. Toque para ver o plano.':k.left<0?'Passou um pouco hoje. O resto do ciclo se ajusta sozinho.':`Fique dentro disso e ganhe <b style="color:var(--gold)">+30 XP</b> amanhã`;
+ const noBal=!S.balance&&!S.cardOpen&&!S.tx.length;
+ const heroTop=noBal?`${ic('wallet',14,2)} Falta um dado`:k.state==='bad'?`${ic('pause',14,2.2)} Pausa estratégica`:`${ic('target',14,2)} Missão do dia`;
+ const heroLine=noBal?'Informe quanto tem na conta agora para eu calcular seu dia.':k.dayBudget<=0&&k.state!=='bad'?'Sem folga até o salário. Hoje, só o essencial.':k.state==='bad'?'Tudo bem, bora ajustar. Toque para ver o plano.':k.left<0?'Passou um pouco hoje. O resto do ciclo se ajusta sozinho.':`Fique dentro disso e ganhe <b style="color:var(--gold)">+30 XP</b> amanhã`;
  const freeTxt=S.debts.length?(sm.months==null?'revise as parcelas':sm.months===0?'Você está livre!':freeDate(sm.months)):'Mapear dívidas';
  return`<div class="row" style="gap:10px;margin-bottom:6px"><button data-t="jor" aria-label="Nível ${lv.n}" style="width:46px;height:46px;border-radius:16px;border:0;background:var(--g1);color:var(--gold);font:800 18px var(--r);flex:none;cursor:pointer">${lv.n}</button>
  <div class="sp"><div class="row" style="justify-content:space-between;font-size:12px;font-weight:600"><span class="r">Nível ${lv.n} · ${lv.name}</span><span class="sm" style="font-size:12px">${lv.n>=10?lv.p:lv.p-lv.from+'/'+(lv.to-lv.from)} XP</span></div><div class="xp" style="margin-top:6px"><i style="width:${lv.n>=10?100:((lv.p-lv.from)/(lv.to-lv.from)*100)}%"></i></div></div>
@@ -265,12 +266,12 @@ function vHoje(){const k=calc();try{S.dstat=S.dstat||{};const tk=iso(today());S.
  ${(!S.bills.length||!S.debts.length||!S.tx.length)&&!S.demo?`<div class="tile stack" style="gap:6px"><span class="tt">Primeiros passos</span><span class="sm" style="margin-top:-4px">Cada um vale XP. Um por vez.</span>${[[!S.tx.length,'Registrar seu primeiro gasto','reg0'],[!S.bills.length,'Cadastrar contas fixas','bill0'],[!S.debts.length,'Mapear a primeira dívida','debt0']].filter(x=>x[0]).map(x=>`<button class="btn ghost full" style="justify-content:space-between;text-align:left;font-size:15px" data-a="${x[2]}"><span>${x[1]}</span>${ic('chev',18)}</button>`).join('')}</div>`:''}
  ${isPay?`<div class="coral row"><div class="sp"><div class="tt">Dia do pagamento!</div><div style="font-size:13px">Salário caiu? Some ${brl0(S.salary)} ao saldo em 1 toque.</div></div><button class="btn" data-a="salary">Somar</button></div>`:''}
  <div>
- <button class="hero ${k.state==='ok'?'':k.state}" data-a="breakdown" style="position:relative;overflow:hidden;z-index:1"><span style="position:absolute;right:-34px;top:-34px;width:140px;height:140px;border-radius:70px;background:var(--glow)"></span>
+ <button class="hero ${noBal?'':k.state==='ok'?'':k.state}" data-a="${noBal?'balance':'breakdown'}" style="position:relative;overflow:hidden;z-index:1"><span style="position:absolute;right:-34px;top:-34px;width:140px;height:140px;border-radius:70px;background:var(--glow)"></span>
  <span class="chip h" style="position:relative">${heroTop}</span>
- <div style="font-size:14px;margin-top:12px;opacity:.85">${k.state==='bad'?'Hoje é dia de pausa':'Gaste no máximo'}</div>
- <div class="big">${brl(k.state==='bad'?k.free:k.left)}</div>
+ <div style="font-size:14px;margin-top:12px;opacity:.85">${noBal?'Saldo em conta':k.state==='bad'?'Hoje é dia de pausa':'Gaste no máximo'}</div>
+ <div class="big">${noBal?'Toque aqui':brl(k.state==='bad'?k.free:k.left)}</div>
  <div style="font-size:13px;opacity:.92">${heroLine}</div>
- <div class="row" style="margin-top:10px;font-size:13px;opacity:.85"><span class="sp">salário em ${c.left} ${c.left===1?'dia':'dias'}${S.vr?' · VR '+brl0(S.vrBal):''}</span><span style="font-weight:700">ver a conta ›</span></div></button>
+ <div class="row" style="margin-top:10px;font-size:13px;opacity:.85"><span class="sp">salário em ${c.left} ${c.left===1?'dia':'dias'}${S.vr?' · VR '+brl0(S.vrBal):''}</span><span style="font-weight:700">${noBal?'informar saldo ›':'ver a conta ›'}</span></div></button>
  <div style="height:10px"></div>
  <button class="wal" data-t="lib" style="background:var(--g2);min-height:128px;z-index:1"><span class="wh"><span>Liberdade</span><span>${Math.round(pr*100)}% quitado</span></span><span class="wb">${freeTxt.replace(/^./,x=>x.toUpperCase())}</span><span class="ws">${S.debts.length&&sm.months?'faltam '+sm.months+' meses':'toque para mapear'}</span></button>
  <button class="wal" data-t="jor" style="background:var(--g3);min-height:112px;margin-top:-44px;z-index:2"><span class="wh"><span>Sequência · baú semanal</span><span>${wk>=7?'baú aberto!':'baú em '+(7-wk)+(7-wk===1?' dia':' dias')}</span></span><span class="wb">${wk} de 7 dias</span><span class="ws">${st} ${st===1?'dia seguido':'dias seguidos'} · abra o app todo dia</span></button>
